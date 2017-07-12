@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @category.name %>
+</p>
+<div class="categoryPosts">
+<% @posts.each do |post| %>
+<a href="/posts/<%= post.id %>"><div class="post">
+	<%= image_tag post.photo.url(:thumb) %>
+	<%= post.title %>
+	<%= post.user.username %>
+</div></a>
+<% end %>
+</div>

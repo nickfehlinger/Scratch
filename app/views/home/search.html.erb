@@ -1,0 +1,14 @@
+<h2>Search Results</h2>
+	<% if @posts %>
+	<ol>
+<% @posts.each do |post| %>
+<a href="/posts/<%= post.id %>"><div class="post">
+	<%= image_tag post.photo.url(:thumb) %>
+	<%= post.title %>
+	<%= post.user.username %>
+</div></a>
+<% end %>
+	</ol>
+	<% else %>
+	<h3>No results</h3>
+	<% end %>

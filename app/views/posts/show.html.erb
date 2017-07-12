@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+<% if @current_user && @user == @current_user %>
+<%= link_to 'Edit', edit_post_path(@post) %>
+<%= link_to 'Destroy', @post, method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
+<h2>
+  <%= @post.title %>
+</h2>
+<p>posted under:
+<% @post.categories.each do |category| %>
+<%= link_to category.name, category %>
+<% end %>
+</p>
+
+<% if @post.photo.url != '/images/original/missing.png' %>
+<div id="postimage" style="background-image: url('<%= @post.photo.url %>');">
+</div>
+<% end %>
+
+<p>
+  <%= @post.body %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= link_to @user.username, @user %>
+</p>
+<% if @current_user %>
+<div id="favorites">
+<%= render 'favorites/form', favorite: Favorite.new %>
+<%= @fav_count %>
+</div>
+
+<%= render 'comments/form', comment: Comment.new %>
+<% end %>
+<div id="comments">
+<% @post.comments.each do |comment| %>
+<%= comment.body %>
+<%= comment.user.username %>
+<% end %>
+</div>

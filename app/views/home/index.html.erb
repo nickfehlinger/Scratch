@@ -1,0 +1,45 @@
+<div class="row">
+<% for i in 0..2 %>
+<% if @posts[i] %>
+<div class="col-md-4">
+	<a href="/posts/<%= @posts[i].id %>">
+	<div class="posts">
+		<%= image_tag @posts[i].photo.url(:thumb) %>
+		<%= @posts[i].title %>
+		<%= @posts[i].user.username %>
+	</div>
+	</a>
+</div>
+<% end %>
+<% end %>
+</div>
+<div class="row">
+<% for i in 3..5 %>
+<% if @posts[i] %>
+<div class="col-md-4">
+	<a href="/posts/<%= @posts[i].id %>">
+	<div class="posts">
+		<%= image_tag @posts[i].photo.url(:thumb) %>
+		<%= @posts[i].title %>
+		<%= @posts[i].user.username %>
+	</div>
+	</a>
+</div>
+<% end %>
+<% end %>
+</div>
+<div class="row">
+<% for i in 6..8 %>
+<% if @posts[i] %>
+<div class="col-md-4">
+	<a href="/posts/<%= @posts[i].id %>">
+	<div class="posts">
+		<%= image_tag @posts[i].photo.url(:thumb) %>
+		<%= @posts[i].title %>
+		<%= @posts[i].user.username %>
+	</div>
+	</a>
+</div>
+<% end %>
+<% end %>
+</div>
