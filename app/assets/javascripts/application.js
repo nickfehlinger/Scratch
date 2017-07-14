@@ -11,5 +11,8 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require turbolinks
 //= require_tree .
+document.addEventListener("DOMContentLoaded",function(){
+	var year = new Date().getFullYear()
+document.querySelector("#year").innerHTML = year
+});

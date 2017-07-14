@@ -10,38 +10,32 @@
       </ul>
     </div>
   <% end %>
-
+  <p id="notice"><%= notice %></p>
   <div class="field">
-    <%= form.label :fname %>
-    <%= form.text_field :fname, id: :user_fname %>
+    <%= form.text_field :fname, id: :user_fname, placeholder: 'First Name' %>
   </div>
 
   <div class="field">
-    <%= form.label :lname %>
-    <%= form.text_field :lname, id: :user_lname %>
+    <%= form.text_field :lname, id: :user_lname, placeholder: 'Last Name' %>
   </div>
 
   <div class="field">
-    <%= form.label :username %>
-    <%= form.text_field :username, id: :user_username %>
+    <%= form.text_field :username, id: :user_username, placeholder: 'Username' %>
   </div>
 
   <div class="field">
-    <%= form.label :password %>
-    <%= form.text_field :password, id: :user_password %>
+    <%= form.text_field :password, id: :user_password, placeholder: 'Password' %>
   </div>
 
   <div class="field">
-    <%= form.label :hometown %>
-    <%= form.text_field :hometown, id: :user_hometown %>
+    <%= form.text_field :hometown, id: :user_hometown, placeholder: 'Hometown' %>
   </div>
 
   <div class="field">
-    <%= form.label :bio %>
-    <%= form.text_field :bio, id: :user_bio %>
+    <%= form.text_area :bio, id: :user_bio, placeholder: 'Describe Yourself...' %>
   </div>
 
-  <div class="field">
+  <div class="field" id="photo">
     <%= form.label :avatar %>
     <%= form.file_field :avatar, id: :user_photo %>
   </div>

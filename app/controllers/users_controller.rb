@@ -10,6 +10,9 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @recent_posts = @user.posts.order('created_at DESC').limit(9)
+    @recent_favorites = @user.favorites.order('created_at DESC').limit(10)
+    @recent_comments = @user.comments.order('created_at DESC').limit(10)
   end
 
   # GET /users/new
@@ -24,22 +27,21 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
+    if User.find_by(params[:username])
+      redirect_to new_user_path, notice: 'Username already taken'
+    else
     @user = User.new(user_params)
-    def upload
-      uploaded_io = params[:user][:photo]
-      File.open(Rails.root.join('public', 'uploads', uploaded_io.original_filename), 'wb') do |file|
-      file.write(uploaded_io.read)
-    end
-    end
     respond_to do |format|
       if @user.save
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
+        session[:user_id] = @user.id
       else
         format.html { render :new }
         format.json { render json: @user.errors, status: :unprocessable_entity }
       end
     end
+  end
   end
 
   # PATCH/PUT /users/1
@@ -59,6 +61,9 @@ class UsersController < ApplicationController
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
+    @user.comments.destroy_all
+    @user.favorites.destroy_all
+    @user.posts.destroy_all
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }

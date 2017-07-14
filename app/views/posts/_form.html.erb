@@ -12,16 +12,14 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :post_title %>
+    <%= form.text_field :title, id: :post_title, placeholder: 'Title' %>
   </div>
 
   <div class="field">
-    <%= form.label :body %>
-    <%= form.text_area :body, id: :post_body %>
+    <%= form.text_area :body, id: :post_body, placeholder: "What's Cooking?" %>
   </div>
 
-  <div class="field">
+  <div class="field" id="photo">
     <%= form.label :photo %>
     <%= form.file_field :photo, id: :post_photo %>
   </div>

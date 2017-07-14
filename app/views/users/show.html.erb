@@ -1,39 +1,41 @@
+<div id="users">
 <p id="notice"><%= notice %></p>
-
+<% if @current_user && @user == @current_user %>
+<div id="editdelete">
+<%= link_to 'Edit Your Profile', edit_user_path(@user) %> |
+<%= link_to 'Delete Your Account', @user, method: :delete, data: { confirm: 'Are you sure? This cannot be undone' } %>
+</div>
+<% end %>
+<% if @user.avatar.url != '/images/original/missing.png' %>
+<div id="useravatar" style="background-image: url('<%= @user.avatar.url %>');">
+</div>
+<% end %>
+<div id="user_info">
+<h2>
+  <%= @user.fname %>  <%= @user.lname %>
+</h2>
 <p>
-  <strong>Fname:</strong>
-  <%= @user.fname %>
+  @<%= @user.username %>
 </p>
 
 <p>
-  <strong>Lname:</strong>
-  <%= @user.lname %>
-</p>
-
-<p>
-  <strong>Username:</strong>
-  <%= @user.username %>
-</p>
-
-<p>
-  <strong>Password:</strong>
-  <%= @user.password %>
-</p>
-
-<p>
-  <strong>Hometown:</strong>
   <%= @user.hometown %>
 </p>
-
-<p>
-  <strong>Bio:</strong>
+</div>
+<p id="bio">
   <%= @user.bio %>
 </p>
-
-<p>
-  <strong>Photo:</strong>
-  <%= image_tag @user.avatar.url %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h3>Recent Posts</h3>
+<% @recent_posts.each do |post| %>
+<a href="/posts/<%= post.id %>">
+	<div class="posts search">
+		<% if post.photo.url != '/images/original/missing.png' %>
+		<div class="homethumb" style="background-image: url('<%= post.photo.url %>');">
+		</div>
+		<% end %>
+		<h2><%= post.title %></h2>
+		<p> by <%= post.user.username %></p>
+	</div>
+	</a>
+	<% end %>
+</div>

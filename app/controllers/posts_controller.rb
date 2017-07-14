@@ -59,6 +59,7 @@ class PostsController < ApplicationController
   def destroy
     @post.comments.destroy_all
     @post.favorites.destroy_all
+    @post.categories.destroy_all
     @post.destroy
     respond_to do |format|
       format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }

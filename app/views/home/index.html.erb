@@ -1,12 +1,16 @@
+<div id="home">
 <div class="row">
 <% for i in 0..2 %>
 <% if @posts[i] %>
 <div class="col-md-4">
 	<a href="/posts/<%= @posts[i].id %>">
 	<div class="posts">
-		<%= image_tag @posts[i].photo.url(:thumb) %>
-		<%= @posts[i].title %>
-		<%= @posts[i].user.username %>
+		<% if @posts[i].photo.url != '/images/original/missing.png' %>
+		<div class="homethumb" style="background-image: url('<%= @posts[i].photo.url %>');">
+		</div>
+		<% end %>
+		<h2><%= @posts[i].title %></h2>
+		<p> by <%= @posts[i].user.username %></p>
 	</div>
 	</a>
 </div>
@@ -19,9 +23,12 @@
 <div class="col-md-4">
 	<a href="/posts/<%= @posts[i].id %>">
 	<div class="posts">
-		<%= image_tag @posts[i].photo.url(:thumb) %>
-		<%= @posts[i].title %>
-		<%= @posts[i].user.username %>
+		<% if @posts[i].photo.url != '/images/original/missing.png' %>
+		<div class="homethumb" style="background-image: url('<%= @posts[i].photo.url %>');">
+		</div>
+		<% end %>
+		<h2><%= @posts[i].title %></h2>
+		<p> by <%= @posts[i].user.username %></p>
 	</div>
 	</a>
 </div>
@@ -34,12 +41,16 @@
 <div class="col-md-4">
 	<a href="/posts/<%= @posts[i].id %>">
 	<div class="posts">
-		<%= image_tag @posts[i].photo.url(:thumb) %>
-		<%= @posts[i].title %>
-		<%= @posts[i].user.username %>
+		<% if @posts[i].photo.url != '/images/original/missing.png' %>
+		<div class="homethumb" style="background-image: url('<%= @posts[i].photo.url %>');">
+		</div>
+		<% end %>
+		<h2><%= @posts[i].title %></h2>
+		<p> by <%= @posts[i].user.username %></p>
 	</div>
 	</a>
 </div>
 <% end %>
 <% end %>
+</div>
 </div>

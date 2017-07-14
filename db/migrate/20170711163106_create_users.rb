@@ -3,10 +3,10 @@ class CreateUsers < ActiveRecord::Migration[5.1]
     create_table :users do |t|
       t.string :fname
       t.string :lname
-      t.string :username
+      t.string :username, unique: true
       t.string :password
       t.string :hometown
-      t.string :bio
+      t.text :bio
       t.attachment :avatar
 
       t.timestamps
