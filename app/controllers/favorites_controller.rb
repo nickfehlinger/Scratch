@@ -25,8 +25,11 @@ class FavoritesController < ApplicationController
   # POST /favorites
   # POST /favorites.json
   def create
+        @post = Post.find_by(id: params[:post_id])
+    if Favorite.find_by(user_id: params[:favorite][:user_id], post_id: params[:favorite][:post_id])
+      redirect_to @post, notice: 'already favorited'
+    else
     @favorite = Favorite.new(favorite_params)
-    @post = Post.find_by(id: params[:post_id])
     respond_to do |format|
       if @favorite.save
         format.html { redirect_to @post}
@@ -35,6 +38,7 @@ class FavoritesController < ApplicationController
         format.html { render :new }
         format.json { render json: @favorite.errors, status: :unprocessable_entity }
       end
+    end
     end
   end
 

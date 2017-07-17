@@ -38,4 +38,26 @@
 	</div>
 	</a>
 	<% end %>
+<div id="break"></div>
+<div class="comments">
+<h3>Recent Comments</h3>
+<% @recent_comments.each do |comment| %>
+<div class="usercomment">
+		<p>"<%= comment.body %>" on:</p>
+	<a href="/posts/<%= comment.post.id %>">
+		<p><%= comment.post.title %> by <%= comment.post.user.username %></p>
+	</a>
+</div>
+	<% end %>
+</div>
+<div class="favorites">
+<h3>Recent Favorites</h3>
+<% @recent_favorites.each do |favorite| %>
+<div class="userfavorite">
+	<a href="/posts/<%= favorite.post.id %>">
+		<p><%= favorite.post.title %> by <%= favorite.post.user.username %></p>
+	</a>
+</div>
+	<% end %>
+</div>
 </div>

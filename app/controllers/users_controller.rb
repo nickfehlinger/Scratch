@@ -27,7 +27,8 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    if User.find_by(params[:username])
+        
+    if User.find_by(username: params[:username])
       redirect_to new_user_path, notice: 'Username already taken'
     else
     @user = User.new(user_params)
@@ -66,7 +67,7 @@ class UsersController < ApplicationController
     @user.posts.destroy_all
     @user.destroy
     respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
+      format.html { redirect_to root, notice: 'User was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

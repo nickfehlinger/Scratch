@@ -11,10 +11,27 @@
 			font-size: 2.5em;
 			margin: 5px 10px;
 		}
+	.carousel{
+		z-index: -1;
+		margin: 5px;
+		.carousel-caption{
+			color: #2e3caf;
+			background-color: rgba(255,255,255,0.7);
+			border-radius: 20px;
+		}
+	}
+	.item{
+	/*	height: 400px;*/
+		background-size: cover;
+		.space{
+			height: 400px;
+		}
+	}
 	.posts{
 		/*border: 2px solid #2e3caf;*/
 		margin: 5px;
 		height: 100%;
+		vertical-align: top;
 		.homethumb{
 			width: 100%;
 			height: 200px;
