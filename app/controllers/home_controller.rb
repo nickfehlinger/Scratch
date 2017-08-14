@@ -5,10 +5,10 @@ class HomeController < ApplicationController
 
 	def search
 		puts params[:q]
-	if true || params[:q]
-      @posts = Post.where("title LIKE '%#{params[:q]}%' OR body LIKE '%#{params[:q]}%'"  )
-    else
-      @posts = nil
-    end
+		if true || params[:q]
+	      @posts = Post.where("title LIKE '%#{params[:q]}%' OR body LIKE '%#{params[:q]}%'"  )
+	    else
+	      @posts = nil
+	    end
 	end
 end
