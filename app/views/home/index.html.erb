@@ -7,6 +7,7 @@
 		<li data-target="#featured_posts" data-slide-to="3"></li>
 	</ol>
 	<div class="carousel-inner" role="listbox">
+		<% if @posts[0] %>
 			<div class="item active" style="background-image: url('<%= @posts[0].photo.url %>');">
 				<a href="/posts/<%= @posts[0].id %>">
 				<div class="space"></div>
@@ -16,7 +17,9 @@
 				</div>
 				</a>
 			</div>
-		<div class="item" style="background-image: url('<%= @posts[1].photo.url %>');">
+		<% end %>
+		<% if @posts[1] %>
+			<div class="item" style="background-image: url('<%= @posts[1].photo.url %>');">
 				<a href="/posts/<%= @posts[1].id %>">
 				<div class="space"></div>
 				<div class="carousel-caption">
@@ -25,7 +28,9 @@
 				</div>
 				</a>
 			</div>
-		<div class="item" style="background-image: url('<%= @posts[2].photo.url %>');">
+		<% end %>
+		<% if @posts[2] $>
+			<div class="item" style="background-image: url('<%= @posts[2].photo.url %>');">
 				<a href="/posts/<%= @posts[2].id %>">
 				<div class="space"></div>
 				<div class="carousel-caption">
@@ -34,7 +39,9 @@
 				</div>
 				</a>
 			</div>
-		<div class="item" style="background-image: url('<%= @posts[3].photo.url %>');">
+		<% end %>
+		<% if @posts[3] %>
+			<div class="item" style="background-image: url('<%= @posts[3].photo.url %>');">
 				<a href="/posts/<%= @posts[3].id %>">
 				<div class="space"></div>
 				<div class="carousel-caption">
@@ -43,6 +50,7 @@
 				</div>
 				</a>
 			</div>
+		<% end %>
 	</div>
 	<a class="left carousel-control" href="#featured_posts" role="button" data-slide="prev">
 	    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
