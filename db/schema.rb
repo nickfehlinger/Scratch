@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 20170711164815) do
     t.string "username"
     t.string "password"
     t.string "hometown"
-    t.string "bio"
+    t.text "bio"
     t.string "avatar_file_name"
     t.string "avatar_content_type"
     t.integer "avatar_file_size"
